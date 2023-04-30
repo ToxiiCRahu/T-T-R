@@ -1,18 +1,19 @@
 import requests
 from requests.structures import CaseInsensitiveDict
 
-number=str(input("Enter Number:- "))
-amount=int(input("Enter Amount:- "))
+Number=str(input("Enter Your Number-: "))
+messege=input(" Enter Your Messege:- ")
 
-
-url = "https://bikroy.com/data/phone_number_login/verifications/phone_login?phone="+number
+url = "https://mysms.today/resend/otp"
 
 headers = CaseInsensitiveDict()
-headers["accept"] = "application/json, text/plain, */*"
-headers["application-name"] = "web"
-headers["referer"] = "https://bikroy.com/en/?login-modal=true&redirect-url=/"
+headers["Content-Type"] = "application/json"
 
-for i in range(amount):
-    resp = requests.get(url, headers=headers)
+data = '{"mobile": "'+Number+'","msg": "'+messege+'"}'
+
+
+
+
+for i in range(1):
+    resp = requests.post(url, headers=headers, data=data)
     print(resp.text)
-    print(str(i+1)+("SMS SEND"))
